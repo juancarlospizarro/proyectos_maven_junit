@@ -1,4 +1,4 @@
-package com.endes.instrumento;
+package com.endes;
 
 /**
  * Clase que representa un termómetro para gestionar temperaturas en diferentes unidades.
