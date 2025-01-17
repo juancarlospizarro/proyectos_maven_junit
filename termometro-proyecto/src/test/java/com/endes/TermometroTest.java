@@ -82,4 +82,6 @@ class TermometroTest {
 	void testTemperaturaNoEnRango() {
 		assertFalse(termometro.estaEnRango(10, 20));
 	}
+	
+	
 }
