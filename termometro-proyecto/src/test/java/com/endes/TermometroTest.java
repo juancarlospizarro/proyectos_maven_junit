@@ -32,6 +32,34 @@ class TermometroTest {
 	}
 	*/
 	
+	
+	@Test
+	@DisplayName("Prueba del constructor")
+	void testConstructor() {
+		Double resultadoEsperado = 5.0;
+		Double resultado = termometro.getTemperaturaCelsius();
+		
+		assertEquals(resultadoEsperado, resultado);
+	}
+	
+	@Test
+	@DisplayName("Prueba devolución correcta de temperatura")
+	void testTemperaturaDevueltaCorrecta() {
+		Double resultadoEsperado = 5.0;
+		Double valor = termometro.getTemperaturaCelsius();
+		
+		assertEquals(resultadoEsperado, valor);
+	}
+	
+	@Test
+	@DisplayName("Prueba establecer temperatura correcta")
+	void testEstablecerTemperaturaCorrecta() {
+		Double valorEsperado = 10.0;
+		termometro.setTemperaturaCelsius(valorEsperado);
+		
+		assertEquals(valorEsperado, termometro.getTemperaturaCelsius());
+	}
+	
 	@Test
 	@DisplayName("Comprobar resultado correcto Fharenheit")
 	void testConvertirAFahrenheit() {
@@ -83,5 +111,29 @@ class TermometroTest {
 		assertFalse(termometro.estaEnRango(10, 20));
 	}
 	
+	@Test
+	@DisplayName("Temperatura en congelación")
+	void testTemperaturaEnCongelacion() {
+		termometro = new Termometro(-5);
+		assertTrue(termometro.esCongelacion());
+	}
 	
+	@Test
+	@DisplayName("Temperatura no en congelación")
+	void testTemperaturaNoEnCongelacion() {
+		assertFalse(termometro.esCongelacion());
+	}
+	
+	@Test
+	@DisplayName("Temperatura en ebullición")
+	void testTemperaturaEnEbullicion() {
+		termometro = new Termometro(150);
+		assertTrue(termometro.esEbullicion());
+	}
+	
+	@Test
+	@DisplayName("Temperatura no en ebullición")
+	void testTemperaturaNoEnEbullicion() {
+		assertFalse(termometro.esEbullicion());
+	}
 }
