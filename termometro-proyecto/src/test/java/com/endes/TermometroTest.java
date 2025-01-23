@@ -13,26 +13,26 @@ class TermometroTest {
 
 	Termometro termometro;
 	
-	/* @BeforeAll
+	
+	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 	}
-	*/
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		termometro = new Termometro(5);
 	}
 
-	/* @AfterEach
+	@AfterEach
 	void tearDown() throws Exception {
 	}
-	*/
 	
 	
+	// Test constructor
 	@Test
 	@DisplayName("Prueba del constructor")
 	void testConstructor() {
@@ -42,6 +42,7 @@ class TermometroTest {
 		assertEquals(resultadoEsperado, resultado);
 	}
 	
+	// Test getTemperatura()
 	@Test
 	@DisplayName("Prueba devolución correcta de temperatura")
 	void testTemperaturaDevueltaCorrecta() {
@@ -51,6 +52,7 @@ class TermometroTest {
 		assertEquals(resultadoEsperado, valor);
 	}
 	
+	// Test setTemperatura()
 	@Test
 	@DisplayName("Prueba establecer temperatura correcta")
 	void testEstablecerTemperaturaCorrecta() {
@@ -60,6 +62,7 @@ class TermometroTest {
 		assertEquals(valorEsperado, termometro.getTemperaturaCelsius());
 	}
 	
+	// Test convertirAFahrenheit()
 	@Test
 	@DisplayName("Comprobar resultado correcto Fharenheit")
 	void testConvertirAFahrenheit() {
@@ -69,6 +72,7 @@ class TermometroTest {
 		assertEquals(valorEsperado, valor);
 	}
 	
+	// Test convertirAKelvin()
 	@Test
 	@DisplayName("Temperatura Kelvin no válida")
 	void testTemperaturaKelvinNoValida() {
@@ -89,6 +93,7 @@ class TermometroTest {
 		assertEquals(valorEsperado, valor);
 	}
 
+	// Test ajustarTemperatura()
 	@Test
 	@DisplayName("Ajustar temperatura correctamente")
 	void testAjustarTemperaturaCorrecta() {
@@ -99,6 +104,7 @@ class TermometroTest {
 		assertEquals(valorEsperado, valor);
 	}
 	
+	// Test estaEnRango()
 	@Test
 	@DisplayName("La temperatura se encuentra en rango")
 	void testTemperaturaEnRango() {
@@ -106,11 +112,20 @@ class TermometroTest {
 	}
 	
 	@Test
-	@DisplayName("La temperatura no se encuentra en rango")
-	void testTemperaturaNoEnRango() {
-		assertFalse(termometro.estaEnRango(10, 20));
+	@DisplayName("La temperatura está por encima del rango")
+	void testTemperaturaSuperiorAlRango() {
+		termometro = new Termometro(15);
+		assertFalse(termometro.estaEnRango(0, 10));
 	}
 	
+	@Test
+	@DisplayName("La temperatura está por debajo del rango")
+	void testTemperaturaInferiorAlRango() {
+		termometro = new Termometro(-5);
+		assertFalse(termometro.estaEnRango(0, 10));
+	}
+	
+	// Test esCongelacion()
 	@Test
 	@DisplayName("Temperatura en congelación")
 	void testTemperaturaEnCongelacion() {
@@ -124,6 +139,7 @@ class TermometroTest {
 		assertFalse(termometro.esCongelacion());
 	}
 	
+	// Test esEbullicion()
 	@Test
 	@DisplayName("Temperatura en ebullición")
 	void testTemperaturaEnEbullicion() {
